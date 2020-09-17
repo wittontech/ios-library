@@ -140,4 +140,3 @@
 #import "UAWKWebViewNativeBridge.h"
 #import "UAWalletAction.h"
 #import "UAWebViewCallData.h"
-#import "UIWebView+UAAdditions.h"

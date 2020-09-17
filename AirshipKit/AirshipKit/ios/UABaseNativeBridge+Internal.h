@@ -19,7 +19,7 @@ extern NSString *const UANativeBridgeUAirshipScheme;
 extern NSString *const UANativeBridgeDismissCommand;
 
 /**
- * Base class for UIWebView & WKWebView native bridges that automatically inject the 
+ * Base class for WKWebView native bridges that automatically inject the
  * Airship Javascript interface on whitelisted URLs.
  */
 @interface UABaseNativeBridge()
@@ -31,7 +31,7 @@ extern NSString *const UANativeBridgeDismissCommand;
 /**
  * Populate Javascript environment if the webView is showing a whitelisted URL.
  *
- * @param webView The UIWebView or WKWebView.
+ * @param webView The WKWebView.
  * @param url The request URL.
  * @param completionHandler A completion handler to be called when the environment is fully populated.
  */
@@ -41,7 +41,7 @@ extern NSString *const UANativeBridgeDismissCommand;
  * Call the appropriate Javascript delegate with the call data and evaluate the returned Javascript.
  *
  * @param data The object holding the data associated with JS delegate calls .
- * @param webView The UIWebView or WKWebView.
+ * @param webView The WKWebView.
  */
 - (void)performJSDelegateWithData:(UAWebViewCallData *)data webView:(UIView *)webView;
 

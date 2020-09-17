@@ -92,7 +92,7 @@
 #pragma mark -
 #pragma mark Quick Look methods
 
-- (BOOL)waitWithTimeoutInterval:(NSTimeInterval)interval pollingWebView:(UIWebView *)webView {
+- (BOOL)waitWithTimeoutInterval:(NSTimeInterval)interval pollingWebView:(WKWebView *)webView {
     NSDate *timeoutDate = [NSDate dateWithTimeInterval:interval sinceDate:self.date.now];
 
     // The webView may not have begun loading at this point
@@ -113,7 +113,7 @@
 
 - (id)debugQuickLookObject {
 
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    WKWebView *webView = [[WKWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:self.messageBodyURL];
 
     UAUserData *userData = [[UAirship inboxUser] getUserDataSync];

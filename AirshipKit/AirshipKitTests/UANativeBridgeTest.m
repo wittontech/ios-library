@@ -4,6 +4,7 @@
 #import <JavaScriptCore/JavaScriptCore.h>
 #import "UAWebViewCallData.h"
 #import "UAirship.h"
+#import <WebKit/WebKit.h>
 
 @interface UANativeBridgeTest : UABaseTest
 @property (nonatomic, strong) JSContext *jsc;
@@ -17,24 +18,24 @@
 - (void)setUp {
     [super setUp];
 
-    self.mockWebView = [self mockForClass:[UIWebView class]];
-
-    NSString *path = [[UAirship resources] pathForResource:@"UANativeBridge" ofType:@""];
-    self.nativeBridge = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-
-
-    self.jsc = [[JSContext alloc] initWithVirtualMachine:[[JSVirtualMachine alloc] init]];
-
-    //UAirship and window are only used for storage – the former is injected when setting up a UIWebView,
-    //and the latter appears to be non-existant in JavaScriptCore
-    [self.jsc evaluateScript:@"_UAirship = {}"];
-    [self.jsc evaluateScript:@"window = {}"];
-
-    [self.jsc evaluateScript:self.nativeBridge];
+//    self.mockWebView = [self mockForClass:[WKWebView class]];
+//
+//    NSString *path = [[UAirship resources] pathForResource:@"UANativeBridge" ofType:@""];
+//    self.nativeBridge = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//
+//
+//    self.jsc = [[JSContext alloc] initWithVirtualMachine:[[JSVirtualMachine alloc] init]];
+//
+//    //UAirship and window are only used for storage – the former is injected when setting up a WKWebView,
+//    //and the latter appears to be non-existant in JavaScriptCore
+//    [self.jsc evaluateScript:@"_UAirship = {}"];
+//    [self.jsc evaluateScript:@"window = {}"];
+//
+//    [self.jsc evaluateScript:self.nativeBridge];
 }
 
 - (void)tearDown {
-    [self.mockWebView stopMocking];
+//    [self.mockWebView stopMocking];
     [super tearDown];
 }
 

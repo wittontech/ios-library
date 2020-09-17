@@ -74,7 +74,7 @@
     // display both view controllers in horizontally regular contexts
     self.preferredDisplayMode = UISplitViewControllerDisplayModeAllVisible;
     
-    if (self.style) {
+    if (self.mcStyle) {
         [self applyStyle];
     }
 }
@@ -90,7 +90,7 @@
 }
 
 - (void)setStyle:(UAMessageCenterStyle *)style {
-    _style = style;
+    _mcStyle = style;
     self.listViewController.style = style;
 
     if (self.listNav && self.messageNav) {
@@ -99,25 +99,25 @@
 }
 
 - (void)applyStyle {
-    if (self.style.navigationBarColor) {
-        self.listNav.navigationBar.barTintColor = self.style.navigationBarColor;
-        self.messageNav.navigationBar.barTintColor = self.style.navigationBarColor;
+    if (self.mcStyle.navigationBarColor) {
+        self.listNav.navigationBar.barTintColor = self.mcStyle.navigationBarColor;
+        self.messageNav.navigationBar.barTintColor = self.mcStyle.navigationBarColor;
     }
 
     // Only apply opaque property if a style is set
-    if (self.style) {
-        self.listNav.navigationBar.translucent = !self.style.navigationBarOpaque;
-        self.messageNav.navigationBar.translucent = !self.style.navigationBarOpaque;
+    if (self.mcStyle) {
+        self.listNav.navigationBar.translucent = !self.mcStyle.navigationBarOpaque;
+        self.messageNav.navigationBar.translucent = !self.mcStyle.navigationBarOpaque;
     }
 
     NSMutableDictionary *titleAttributes = [NSMutableDictionary dictionary];
 
-    if (self.style.titleColor) {
-        titleAttributes[NSForegroundColorAttributeName] = self.style.titleColor;
+    if (self.mcStyle.titleColor) {
+        titleAttributes[NSForegroundColorAttributeName] = self.mcStyle.titleColor;
     }
 
-    if (self.style.titleFont) {
-        titleAttributes[NSFontAttributeName] = self.style.titleFont;
+    if (self.mcStyle.titleFont) {
+        titleAttributes[NSFontAttributeName] = self.mcStyle.titleFont;
     }
 
     if (titleAttributes.count) {
@@ -125,8 +125,8 @@
         self.messageNav.navigationBar.titleTextAttributes = titleAttributes;
     }
 
-    if (self.style.tintColor) {
-        self.view.tintColor = self.style.tintColor;
+    if (self.mcStyle.tintColor) {
+        self.view.tintColor = self.mcStyle.tintColor;
     }
 }
 
